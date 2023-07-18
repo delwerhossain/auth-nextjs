@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Link from "next/link";
 
-export default function Home() {
+const layout = ({ children }) => {
   return (
     <>
-      <div className="flex gap-12 justify-center items-center h-screen ">
+      <div className="flex gap-12 justify-center items-center my-4 ">
         <Link className="btn btn-warning" href="/signup">
           SignUp
         </Link>
@@ -12,6 +11,9 @@ export default function Home() {
           Login
         </Link>
       </div>
+      {children}
     </>
   );
-}
+};
+
+export default layout;
