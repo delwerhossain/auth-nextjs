@@ -3,7 +3,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const router = useRouter();
@@ -18,11 +19,14 @@ const SignUp = () => {
     try {
       setLoading(true);
       const res = await axios.post(`/api/users/signup`, user);
-      console.log("signup successful ", res.data);
+      toast.success("signup successful ");
 
-      router.push("/login");
+      setTimeout(() => { 
+              router.push("/login");
+      },[500])
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
+      console.log(error.message);
     } finally {
       setLoading(false);
     }
@@ -105,6 +109,8 @@ const SignUp = () => {
         </div>
         <Link href="/login">Visit login page</Link>
       </div>
+      {/* ToastContainer */}
+      <ToastContainer />
     </div>
   );
 };
