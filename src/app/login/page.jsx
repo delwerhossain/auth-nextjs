@@ -20,7 +20,7 @@ const Login = () => {
       setLoading(true);
       const res = await axios.post(`/api/users/login`, user);
       // console.log(res);
-      router.push("/profile");
+      router.push(`/profile/${user.email}`);
       toast.message('successfully logged');
     } catch (error) {
       toast.error(error.message);
